@@ -1,73 +1,75 @@
-# Medical Cost Data Analysis-EDA
-Today we will explore a data set dedicated to the cost of treatment of different patients. The cost of treatment depends on many factors: diagnosis, type of clinic, city of residence, age and so on. We have no data on the diagnosis of patients. But we have other information that can help us to make a conclusion about the health of patients and practice regression analysis. In any case, I wish you to be healthy! Let's look at our data.
+# 🏥 Medical Cost Data Analysis - EDA
 
-# Steps
+Today we will explore a data set dedicated to the cost of treatment of different patients. The cost of treatment depends on many factors: diagnosis, type of clinic, city of residence, age, and so on. We have no data on the diagnosis of patients. But we have other information that can help us make a conclusion about the health of patients and practice regression analysis.
+
+In any case, I wish you to be healthy! Let's look at our data.
+
+---
+
+## 🔧 Steps
+
 * Encode categorical features like gender, smoker, etc.
-* Correlation between features on costs
-```
-region     -0.006208
-sex         0.057292
-children    0.067998
-bmi         0.198341
-age         0.299008
-smoker      0.787251
-charges     1.000000
-```
-
-* Distribution of charges for smokers and non-smokers
-* Distribution of genders
-* Distribution of Age
-* Distribution of Age VS Charges (non-smokers)
-* Distribution of Age VS Charges (smokers)
-* Distribution of BMI
-* Distribution of BMI and Charges
-* Predict the cost of treatment
-** LinearRegression: 0.7962732059725784
-** LinearRegression (PolynomialFeatures): 0.8849197344147238
-** RandomForestRegressor: 0.89
-
-## Visualizition Analysis
+* Correlation between features on costs:
 
 
-![Image 1](./plots/Correlation_Matrix.png)
-*A strong correlation is observed only with the fact of smoking the patient. To be honest, I expected a higher correlation with bmi. Well. We investigate smoking in more detail.*
+* Distribution of charges for smokers and non-smokers  
+* Distribution of genders  
+* Distribution of age  
+* Distribution of age vs. charges (non-smokers)  
+* Distribution of age vs. charges (smokers)  
+* Distribution of BMI  
+* Distribution of BMI vs. charges  
+* Predict the cost of treatment  
+  - **Linear Regression**: 0.796  
+  - **Polynomial Features + Linear Regression**: 0.885  
+  - **Random Forest Regressor**: 0.89  
 
-![Image 2](./plots/Distribution_of_charges_for_smokers_non_smokers.png)
-*Smoking patients spend more on treatment. But there is a feeling that the number of non-smoking patients is greater.*
+---
 
+## 📊 Visualization Analysis (Descriptive Summary)
 
-![Image 3](./plots/Distribution_of_genders.png)
-*Note that women are coded with the symbol " 1 "and men - "0".*
+### Correlation Matrix
+A strong correlation is observed only with the patient's smoking status. Surprisingly, BMI shows only a modest correlation with charges.
 
-Also we can notice that more male smokers than women smokers. It can be assumed that the total cost of treatment in men will be more than in women, given the impact of smoking.
+### Charges for Smokers vs. Non-Smokers
+Smoking patients tend to spend significantly more on treatment. However, the dataset contains more non-smokers, which may balance overall costs.
 
-![Image 4](./plots/Distribution_of_Age.png)
-*Most of the patients are between 20 to 60 years old.*
+### Gender Distribution
+- Females are encoded as `1`, males as `0`.  
+- More male smokers than female smokers were observed.  
+- Given smoking's influence, total treatment costs for men are likely higher.
 
+### Age Distribution
+Most patients are between 20 and 60 years old, with a fairly even spread within that range.
 
-![Image 5](./plots/number_of_smokers_and_non_smokers.png)
-*The number of smokers and non-smokers (18 years old)*
+### Age vs. Charges
+- For **non-smokers**, charges tend to increase gradually with age.
+- For **smokers**, the increase in charges is more rapid and significant.
 
-![Image 6](./plots/Distribution_of_charges_and_age_for_non_smokers.png)
-*Distribution of charges and age for non-smokers*
+### BMI Distribution
+- BMI values span a wide range, with 30 as the threshold for obesity.
+- Obese patients (BMI > 30) generally face higher treatment costs.
 
+### BMI vs. Charges
+There is a weak to moderate positive relationship between BMI and charges, though not as strong as that of smoking.
 
-![Image 7](./plots/Distribution_of_charges_and_age_for_smokers.png)
-*Distribution of charges and age for smokers*
+### Model Results
+Among the models tested:
+- Linear regression performs reasonably well.
+- Polynomial regression adds noticeable improvement.
+- Random Forest provides the best performance with an R² score of **0.89**.
 
-![Image 8](./plots/Distribution_of_BMI.png)
-*Distribution of BMI*
+---
 
-With a value equal to 30 starts obesity. let's look at the distribution of costs in patients with BMI greater than 30 and less than 30.
+## ✅ Summary
 
-![Image 9](./plots/Distribution_of_charges_for_patients_with_critical_BMI.png)
-*Distribution of costs in patients with BMI greater than 30 and less than 30*
+- **Smoking** is the most influential feature affecting medical costs.
+- **Age** and **BMI** follow, with more moderate effects.
+- **Gender**, **region**, and **number of children** have minimal impact individually.
+- Even simple regression models perform well given the strong influence of a few key variables.
 
-![Image 10](./plots/Distribution_of_and_Chargesnad_BMI.png)
-*Distribution of BMI and Charges*
+---
 
-![Image 11](./plots/model_results.png)
-*Model Results*
-
-
+*EDA conducted by **Ao Xu***  
+*M.S. Data Science | New York University*
 
